@@ -196,18 +196,27 @@ import IconGithub from "./icons/IconGithub.astro";
 </style>
 
 <script type="module">
-	const observer = new IntersectionObserver((entries) => {
+	async function importAddToCalendarButtonModule() {
+	  const module = await import('../../node_modules/add-to-calendar-button/dist/module/index.js');
+	  return module;
+	}
+  
+	const observer = new IntersectionObserver(async (entries) => {
 	  for (const entry of entries) {
 		if (!entry.isIntersecting) continue;
 		observer.disconnect();
-		import('../../node_modules/add-to-calendar-button/dist/module/index.js');
+		const addToCalendarButtonModule = await importAddToCalendarButtonModule();
+		// Now you can use addToCalendarButtonModule to access the imported module.
+		// Initialize Atropos or any other logic here after the module is loaded.
+		// For example:
+		console.log(addToCalendarButtonModule); // Just an example to show the imported module.
 	  }
 	});
+  
 	const instances = document.querySelectorAll('add-to-calendar-button');
 	for (const instance of instances) observer.observe(instance);
-
-	
-</script>
+  </script>
+  
 
 <script type="module">
 	// @ts-nocheck
