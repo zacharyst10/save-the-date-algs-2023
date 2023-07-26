@@ -33,6 +33,24 @@ import IconGithub from "./icons/IconGithub.astro";
 								<h2
 									class="inline-block w-fit px-6 py-1 text-xs min-w-fit font-thin text-center text-white rounded-xl md:w-2/3 md:text-lg bg-black/90">
 									RSVP Here 🚀
+								<add-to-calendar-button 
+									class="mx-auto text-center flex justify-center"
+  									name="ALGS Finals"
+  									description="Come watch TSM dominate"
+  									startDate="2023-09-10"
+  									startTime="08:00"
+  									endDate="2023-09-10"
+  									endTime="17:45"
+  									timeZone="America/Denver"
+  									location="Stout House!"
+  									recurrence_interval="1"
+  									options="'Apple','Google'"
+  									buttonStyle="neumorphism"
+  									buttonsList
+									 
+  									size="3"
+  									lightMode="dark"
+								></add-to-calendar-button>
 								</h2>
 							</div>
 
@@ -178,6 +196,7 @@ import IconGithub from "./icons/IconGithub.astro";
 	}
 </style>
 
+
 <script type="module">
 	// @ts-nocheck
 	/* eslint-disable */
@@ -189,5 +208,17 @@ import IconGithub from "./icons/IconGithub.astro";
 		activeOffset: 120,
 		shadowScale: 5
 	})
+	const observer = new IntersectionObserver((entries) => {
+	  for (const entry of entries) {
+		if (!entry.isIntersecting) continue;
+		observer.disconnect();
+		import('../../node_modules/add-to-calendar-button/dist/module/index.js');
+	  }
+	});
+	const instances = document.querySelectorAll('add-to-calendar-button');
+	for (const instance of instances) observer.observe(instance);
+
+	
+ 
 
 </script>
