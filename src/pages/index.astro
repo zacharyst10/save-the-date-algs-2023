@@ -8,17 +8,20 @@ import TextSlide from "@components/TextSlide.astro";
 ---
 
 <Layout title="Reserve only if you're a GigaChad">
-	<MainCard client:load />
+	<main>
 
-	<!-- <div class="block lg:hidden 2xl:block overflow-auto no-scrollbar">
-		<ContainerScroll>
-			<MediumPost client:visible />
-		</ContainerScroll>
-	</div> -->
-
-	<div>
-		<MainContainer>
-			<TextSlide />
-		</MainContainer>
-	</div>
-</Layout>
+		<MainCard client:load />
+		
+		<!-- <div class="block lg:hidden 2xl:block overflow-auto no-scrollbar">
+			<ContainerScroll>
+				<MediumPost client:visible />
+			</ContainerScroll>
+		</div> -->
+		
+		<div>
+			<MainContainer>
+				<TextSlide />
+			</MainContainer>
+		</div>
+	</main>
+	</Layout>
